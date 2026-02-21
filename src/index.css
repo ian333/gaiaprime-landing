@@ -1,0 +1,151 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  background: #0a0a0f;
+  color: #f1f5f9;
+  overflow-x: hidden;
+}
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #111118; }
+::-webkit-scrollbar-thumb { background: #2a2a3a; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #3a3a4a; }
+
+/* ── Glass morphism ── */
+.glass {
+  background: rgba(17, 17, 24, 0.7);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(42, 42, 58, 0.5);
+}
+
+/* ── Aurora background ── */
+.aurora-bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.aurora-blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(120px);
+  opacity: 0.12;
+  animation: auroraFloat 20s ease-in-out infinite;
+}
+.aurora-blob-1 { width: 600px; height: 600px; background: #06b6d4; top: -200px; right: -200px; }
+.aurora-blob-2 { width: 500px; height: 500px; background: #8b5cf6; bottom: -150px; left: -150px; animation-delay: -7s; }
+.aurora-blob-3 { width: 400px; height: 400px; background: #f59e0b; top: 40%; left: 30%; animation-delay: -14s; }
+
+@keyframes auroraFloat {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(30px, -50px) scale(1.1); }
+  66% { transform: translate(-20px, 20px) scale(0.9); }
+}
+
+/* ── Scroll reveal ── */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-children > * {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+.reveal-children.visible > *:nth-child(1) { transition-delay: 0.1s; opacity: 1; transform: translateY(0); }
+.reveal-children.visible > *:nth-child(2) { transition-delay: 0.2s; opacity: 1; transform: translateY(0); }
+.reveal-children.visible > *:nth-child(3) { transition-delay: 0.3s; opacity: 1; transform: translateY(0); }
+.reveal-children.visible > *:nth-child(4) { transition-delay: 0.4s; opacity: 1; transform: translateY(0); }
+.reveal-children.visible > *:nth-child(5) { transition-delay: 0.5s; opacity: 1; transform: translateY(0); }
+.reveal-children.visible > *:nth-child(6) { transition-delay: 0.6s; opacity: 1; transform: translateY(0); }
+
+/* ── Gradient text ── */
+.gradient-text {
+  background: linear-gradient(135deg, #06b6d4, #8b5cf6, #f59e0b);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  background-size: 200% auto;
+  animation: gradientShift 4s ease infinite;
+}
+@keyframes gradientShift {
+  0%, 100% { background-position: 0% center; }
+  50% { background-position: 100% center; }
+}
+
+/* ── Chat animations ── */
+.chat-msg {
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+.chat-msg.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.typing-dots span {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #06b6d4;
+  animation: typingBounce 1.4s ease-in-out infinite;
+}
+.typing-dots span:nth-child(1) { animation-delay: 0s; }
+.typing-dots span:nth-child(2) { animation-delay: 0.2s; }
+.typing-dots span:nth-child(3) { animation-delay: 0.4s; }
+@keyframes typingBounce {
+  0%, 60%, 100% { transform: translateY(0); opacity: 0.4; }
+  30% { transform: translateY(-6px); opacity: 1; }
+}
+
+/* ── Glow effects ── */
+.glow-button {
+  position: relative;
+  overflow: hidden;
+}
+.glow-button::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  background: linear-gradient(135deg, #06b6d4, #8b5cf6, #f59e0b);
+  border-radius: inherit;
+  z-index: -1;
+  opacity: 0.5;
+  filter: blur(8px);
+  transition: opacity 0.3s;
+}
+.glow-button:hover::before {
+  opacity: 0.8;
+}
+
+.price-glow {
+  text-shadow: 0 0 30px rgba(6, 182, 212, 0.5);
+}
+
+/* ── Card hover ── */
+.card-hover {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.card-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px rgba(6, 182, 212, 0.1);
+}
