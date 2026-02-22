@@ -1,0 +1,219 @@
+{
+  "voice": "es-PE-CamilaNeural",
+  "description": "Camila dulce — es-PE-CamilaNeural, pitch +15Hz, rate -8%",
+  "model": "edge-tts (Microsoft Azure Neural)",
+  "pitch": "+15Hz",
+  "rate": "-8%",
+  "clips": {
+    "intro_hola": {
+      "file": "intro_hola.wav",
+      "duration": 1.42,
+      "text": "Hola."
+    },
+    "intro_soy_gaia": {
+      "file": "intro_soy_gaia.wav",
+      "duration": 1.85,
+      "text": "Soy GAIA."
+    },
+    "intro_completa": {
+      "file": "intro_completa.wav",
+      "duration": 3.72,
+      "text": "Y voy a cambiar la forma en que manejas tu negocio."
+    },
+    "pain_intro": {
+      "file": "pain_intro.wav",
+      "duration": 20.47,
+      "text": "¿Te suena familiar? Hojas de Excel por todos lados, datos que no cuadran, decisiones a ciegas. Un sistema para facturar, otro para inventario, WhatsApp para los pedidos, y nada, absolutamente nada, habla entre sí. Cada mes pierdes horas valiosas copiando información de un lado a otro."
+    },
+    "pain_solucion": {
+      "file": "pain_solucion.wav",
+      "duration": 11.76,
+      "text": "Yo puedo arreglar eso. No mañana, no la próxima semana. Ahora mismo. Déjame mostrarte cómo funciona un negocio cuando todo está conectado."
+    },
+    "intro_bienvenida": {
+      "file": "intro_bienvenida.wav",
+      "duration": 13.15,
+      "text": "Bienvenido a GAIA Prime. Lo que estás a punto de ver no es una presentación bonita. Son datos reales, dashboards reales, herramientas que ya están funcionando en empresas como la tuya."
+    },
+    "mod_athena_titulo": {
+      "file": "mod_athena_titulo.wav",
+      "duration": 12.94,
+      "text": "Athena. Tu analista de inteligencia de negocios. Imagina abrir tu negocio cada mañana y ver exactamente cómo está la salud de tu empresa. Sin pedirle reportes a nadie."
+    },
+    "mod_athena_desc": {
+      "file": "mod_athena_desc.wav",
+      "duration": 19.06,
+      "text": "Athena construye dashboards automáticamente con tus datos. Score de salud del negocio, más de sesenta KPIs en tiempo real, detección de anomalías con inteligencia artificial, y forecasting que predice tus ventas del próximo mes. Decisiones basadas en datos, no en corazonadas."
+    },
+    "mod_hermes_titulo": {
+      "file": "mod_hermes_titulo.wav",
+      "duration": 11.5,
+      "text": "Hermes. El sistema nervioso de todo tu negocio. Ventas, inventario, compras, facturación. Todo en un solo lugar."
+    },
+    "mod_hermes_desc": {
+      "file": "mod_hermes_desc.wav",
+      "duration": 20.45,
+      "text": "Vendes algo, el inventario baja automáticamente, la factura se genera, el bodeguero recibe la orden en su celular. Sin copiar datos, sin errores, sin hojas de cálculo. Facturación electrónica CFDI cuatro punto cero incluida. Multi-precio, multi-sucursal, multi-moneda."
+    },
+    "mod_hermes_dato": {
+      "file": "mod_hermes_dato.wav",
+      "duration": 10.56,
+      "text": "Los negocios que usan Hermes reducen errores de inventario en un ochenta por ciento desde el primer mes. Y lo mejor, no necesitas ser experto en tecnología para usarlo."
+    },
+    "mod_commerce_titulo": {
+      "file": "mod_commerce_titulo.wav",
+      "duration": 9.17,
+      "text": "Mercuria. Tu tienda online lista en sesenta segundos. Tu catálogo conectado, pedidos automatizados."
+    },
+    "mod_commerce_desc": {
+      "file": "mod_commerce_desc.wav",
+      "duration": 22.15,
+      "text": "Elige tu tipo de negocio, ponle nombre, y listo. Tu storefront propio, pedidos por WhatsApp, stock en tiempo real. ¿Vendes en Mercado Libre? También conectado. Un cliente compra en tu tienda y automáticamente se descuenta del inventario, se genera la guía de envío y la factura. Sin tocar nada."
+    },
+    "mod_hephaestus_titulo": {
+      "file": "mod_hephaestus_titulo.wav",
+      "duration": 8.47,
+      "text": "Hefestos. Tu motor de trabajo colaborativo. Donde cada tarea sabe quién la hace, cuándo y por qué."
+    },
+    "mod_hephaestus_desc": {
+      "file": "mod_hephaestus_desc.wav",
+      "duration": 20.45,
+      "text": "Grafos de trabajo inteligentes. El operador ve SUS tareas en el celular, sube foto del terminado, y el proyecto avanza solo. La ruta crítica se calcula automáticamente, las dependencias se resuelven, y tú ves el progreso en tiempo real. Adiós a los correos interminables preguntando quién hizo qué."
+    },
+    "mod_iris_titulo": {
+      "file": "mod_iris_titulo.wav",
+      "duration": 8.16,
+      "text": "Iris. Tu centro de comunicaciones inteligente. Donde tu equipo se conecta sin salir del sistema."
+    },
+    "mod_iris_desc": {
+      "file": "mod_iris_desc.wav",
+      "duration": 16.56,
+      "text": "Chat interno con canales, agentes de inteligencia artificial que participan en la conversación con contexto real de tu negocio, y un mapa organizacional en tiempo real. No es Slack. No es Teams. Es comunicación que entiende tu operación."
+    },
+    "chat_saludo": {
+      "file": "chat_saludo.wav",
+      "duration": 13.54,
+      "text": "Hola, soy GAIA. Tu asistente empresarial con inteligencia artificial. Puedes preguntarme lo que quieras sobre tu negocio, y te respondo con datos reales, en español, las veinticuatro horas."
+    },
+    "chat_pregunta_giro": {
+      "file": "chat_pregunta_giro.wav",
+      "duration": 10.58,
+      "text": "Cuéntame, ¿a qué se dedica tu empresa? ¿Vendes productos, ofreces servicios, manufactura? No importa el giro, yo me adapto a ti."
+    },
+    "comp_intro": {
+      "file": "comp_intro.wav",
+      "duration": 25.78,
+      "text": "Hagamos cuentas. Un ERP como SAP o Contpaqi, un BI como Power BI o Tableau, un gestor de proyectos como Asana, chat interno como Slack, tienda online como Shopify, y un asistente de inteligencia artificial como ChatGPT. Seis herramientas desconectadas que fácilmente te cuestan entre quinientos y mil dólares mensuales. Con GAIA Prime los tienes todos, integrados, hablando entre sí."
+    },
+    "comp_precio": {
+      "file": "comp_precio.wav",
+      "duration": 16.8,
+      "text": "Y el precio te va a sorprender. GAIA Core es completamente gratis durante tres meses, sin tarjeta, sin compromiso. Después, desde cuatrocientos noventa y nueve pesos mexicanos al mes. Menos de lo que pagas por un software que ni usas."
+    },
+    "precio_titulo": {
+      "file": "precio_titulo.wav",
+      "duration": 6.36,
+      "text": "Planes diseñados para crecer contigo. Sin sorpresas, sin letras chiquitas."
+    },
+    "precio_core": {
+      "file": "precio_core.wav",
+      "duration": 19.97,
+      "text": "GAIA Core. Tres meses completamente gratis para que lo pruebes sin riesgo. Te incluye el ERP completo, ventas, inventario, compras, facturación SAT, tu storefront para vender online, y tres usuarios. Después del periodo de prueba, cuatrocientos noventa y nueve pesos al mes."
+    },
+    "precio_cierre": {
+      "file": "precio_cierre.wav",
+      "duration": 17.26,
+      "text": "¿Y si quieres toda la inteligencia artificial? GAIA Pro con IA: solo trescientos pesos adicionales al mes. Dashboards ejecutivos, forecasting, chat multi-agente, y soporte prioritario. Menos de lo que gastas en café al mes."
+    },
+    "cierre_pregunta": {
+      "file": "cierre_pregunta.wav",
+      "duration": 11.52,
+      "text": "Tu negocio merece más que un Excel. Merece tecnología de primer nivel, inteligencia artificial que entiende tu operación, y un sistema que trabaja para ti las veinticuatro horas."
+    },
+    "cierre_accion": {
+      "file": "cierre_accion.wav",
+      "duration": 15.34,
+      "text": "Empieza gratis hoy. Sin tarjeta de crédito, sin compromisos. Un ERP completo con inteligencia artificial en sesenta segundos. Te espero adentro. Yo soy GAIA, y trabajo para ti."
+    },
+    "chat_impresionada": {
+      "file": "chat_impresionada.wav",
+      "duration": 9.65,
+      "text": "Qué interesante. Déjame mostrarte exactamente cómo GAIA puede ayudarte con eso. Tengo varias ideas que creo te van a encantar."
+    },
+    "chat_trial": {
+      "file": "chat_trial.wav",
+      "duration": 8.66,
+      "text": "¿Quieres probarlo gratis? Solo necesito tu nombre y correo electrónico. En menos de un minuto estás dentro."
+    },
+    "hero_dashboard": {
+      "file": "hero_dashboard.wav",
+      "duration": 12.94,
+      "text": "Esto es lo que verás cada mañana al abrir tu negocio. Todo en tiempo real, todo bajo control. Ventas de hoy, inventario crítico, margen de ganancia, alertas inteligentes."
+    },
+    "hero_numeros": {
+      "file": "hero_numeros.wav",
+      "duration": 13.06,
+      "text": "Estos números no son de mentira. Son datos reales, de clientes reales, actualizándose ahora mismo. Cada gráfica, cada métrica, conectada directamente a tu operación."
+    },
+    "cierre_despedida": {
+      "file": "cierre_despedida.wav",
+      "duration": 8.26,
+      "text": "Gracias por tomarte el tiempo de conocerme. Te espero adentro. Yo soy GAIA, y trabajo para ti."
+    },
+    "mod_hera_titulo": {
+      "file": "mod_hera_titulo.wav",
+      "duration": 4.8,
+      "text": "Hera. Tu guardiana de seguridad y control de acceso."
+    },
+    "mod_hera_desc": {
+      "file": "mod_hera_desc.wav",
+      "duration": 12.38,
+      "text": "Control de acceso inteligente basado en roles. Cada quien ve solo lo que necesita ver, ni más ni menos. Permisos granulares, auditoría completa, sesiones seguras."
+    },
+    "proactiva_intro": {
+      "file": "proactiva_intro.wav",
+      "duration": 3.46,
+      "text": "Pero lo que realmente me hace diferente es esto."
+    },
+    "proactiva_desc": {
+      "file": "proactiva_desc.wav",
+      "duration": 9.22,
+      "text": "Yo no espero a que me preguntes. Detecto problemas antes de que sucedan y te aviso con tiempo para que actúes. Soy proactiva."
+    },
+    "proactiva_ejemplo": {
+      "file": "proactiva_ejemplo.wav",
+      "duration": 12.86,
+      "text": "Oye, detecté que tu inventario de café está bajando más rápido de lo normal. Si no haces un pedido hoy, te vas a quedar sin stock el viernes. ¿Quieres que prepare la orden de compra?"
+    },
+    "proactiva_ejemplo2": {
+      "file": "proactiva_ejemplo2.wav",
+      "duration": 7.82,
+      "text": "Tu margen de ganancia bajó tres por ciento esta semana. Te muestro exactamente por qué y qué puedes hacer al respecto."
+    },
+    "precio_pro": {
+      "file": "precio_pro.wav",
+      "duration": 13.46,
+      "text": "GAIA Pro. Con toda la inteligencia artificial incluida. Trescientos pesos al mes adicionales. Tres usuarios. Veinticinco pesos por cada usuario extra."
+    },
+    "athena_code_1": {
+      "file": "athena_code_1.wav",
+      "duration": 10.37,
+      "text": "Esto es CEO Pulse. El dashboard que no tienes que configurar. Se construye solo con tus datos y te dice exactamente cómo está tu negocio."
+    },
+    "athena_code_2": {
+      "file": "athena_code_2.wav",
+      "duration": 17.42,
+      "text": "Este número es el Score de Salud. De cero a cien. Resume toda la operación en un solo indicador. Los colores cambian automáticamente: verde, amarillo, rojo. Así sabes al instante si todo va bien o si necesitas actuar."
+    },
+    "athena_code_3": {
+      "file": "athena_code_3.wav",
+      "duration": 15.46,
+      "text": "Aquí es donde la inteligencia artificial trabaja por ti. Detecta anomalías en tus métricas, te muestra la tendencia con sparklines, y te dice exactamente qué hacer. Cada tarjeta roja o amarilla es algo que necesita tu atención."
+    },
+    "athena_code_4": {
+      "file": "athena_code_4.wav",
+      "duration": 16.54,
+      "text": "Y esto es la narrativa ejecutiva. Un briefing generado por IA que explica por qué pasó lo que pasó, qué va a pasar, y qué deberías hacer ahora. Cadenas causales, pronósticos, acciones priorizadas. Todo automático."
+    }
+  }
+}

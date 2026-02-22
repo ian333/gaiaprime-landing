@@ -32,9 +32,19 @@ const AGENTS: Record<string, { emoji: string; color: string; label: string }> = 
 // ── Demo responses (when no API available) ──
 const DEMO_PATTERNS: { pattern: RegExp; agent: string; response: string }[] = [
   {
+    pattern: /quiero probar|registr|empezar|crear cuenta|signup|sign up|free trial/i,
+    agent: 'gaia',
+    response: `¡Perfecto! 🚀 Te configuro tu sistema en 60 segundos.\n\n**Solo necesito 3 cosas:**\n1. Nombre de tu negocio\n2. Tu nombre\n3. Tu email\n\n¿O prefieres hacerlo por WhatsApp? 👉 [wa.me/5215573633622](https://wa.me/5215573633622)\n\nHaz click en **"🚀 Empieza Gratis"** arriba y tu ERP estará listo antes de que termines tu café. ☕\n\n_3 meses gratis. Sin tarjeta. Sin compromiso._`,
+  },
+  {
+    pattern: /negocio|dedico|tengo|mi empresa|soy dueño|mi tienda|mi taller|mi restaurante/i,
+    agent: 'gaia',
+    response: `¡Qué bien! 💪 Cuéntame más — ¿qué vendes o qué servicio ofreces?\n\nTe pregunto porque GAIA se **pre-configura** según tu giro:\n\n🍔 **Restaurante** → Menú, ingredientes, costos por platillo\n🔧 **Taller** → Órdenes de trabajo, materiales, entregas\n🏭 **Distribución** → Catálogo de precios, stock, rutas\n🦷 **Servicios** → Agenda, facturación, materiales\n\nDime tu giro y te muestro cómo se vería tu panel de GAIA. 👇`,
+  },
+  {
     pattern: /precio|costo|cu[aá]nto cuesta|plan|tarifa|pagar/i,
     agent: 'gaia',
-    response: `**GAIA Prime** tiene un plan simple y transparente:\n\n💰 **$499/mes** + **1% por venta procesada**\n(~$2-5 pesos por transacción)\n\n✅ Incluye TODO:\n• ERP completo (inventario, compras, ventas, facturas SAT)\n• Tienda online + MercadoLibre\n• Gestión de trabajo para bodegueros\n• Analytics y dashboards de CEO\n• Yo (GAIA) disponible 24/7\n\n**Sin contratos** · Sin costos ocultos · Cancela cuando quieras.\n\n¿Quieres que te muestre cómo funciona?`,
+    response: `**GAIA Prime** tiene 2 planes:\n\n🆓 **GAIA Core — GRATIS 3 meses**\n• ERP completo (inventario, compras, ventas, facturas SAT)\n• Storefront para vender online\n• 3 usuarios incluidos\n• Después del trial: $499/mes\n\n🧠 **GAIA Pro + IA — $300 MXN/mes**\n• Todo lo de Core\n• GAIA Brain (IA que entiende tu negocio)\n• Analytics ejecutivos (60+ KPIs)\n• Forecasting con Machine Learning\n• +$100/usuario extra\n\n**Empieza gratis hoy** — sin tarjeta, sin compromiso. Haz click en "Empieza Gratis" arriba. 🚀`,
   },
   {
     pattern: /demo|probar|ver|mostrar|funciona|c[oó]mo/i,
@@ -59,7 +69,7 @@ const DEMO_PATTERNS: { pattern: RegExp; agent: string; response: string }[] = [
   {
     pattern: /tienda|online|internet|vender|storefront|ecommerce/i,
     agent: 'mercuria',
-    response: `🛍️ **Tu tienda online en 60 segundos:**\n\n1. Elige tu tipo de negocio (general, restaurante, taller, etc.)\n2. Ponle nombre\n3. ¡Listo! Tienda publicada\n\n✅ Tus productos se sincronizan automáticamente desde el ERP\n✅ Link compartible por WhatsApp + QR automático\n✅ Los clientes hacen pedidos directo\n✅ También se conecta con **MercadoLibre** 🟡\n\nTodo esto viene incluido en los $499/mes. No necesitas Shopify, ni programador, ni agencia.\n\n¿Te interesa probarlo? Déjame tu WhatsApp.`,
+    response: `🛍️ **Tu tienda online en 60 segundos:**\n\n1. Elige tu tipo de negocio (general, restaurante, taller, etc.)\n2. Ponle nombre\n3. ¡Listo! Tienda publicada\n\n✅ Tus productos se sincronizan automáticamente desde el ERP\n✅ Link compartible por WhatsApp + QR automático\n✅ Los clientes hacen pedidos directo\n✅ También se conecta con **MercadoLibre** 🟡\n\nTodo esto viene incluido en el plan gratuito de 3 meses. No necesitas Shopify, ni programador, ni agencia.\n\n¿Te interesa probarlo? Haz click en "Empieza Gratis" arriba. 🚀`,
   },
   {
     pattern: /trabajo|organiz|proceso|bodega|produccion|tarea/i,
@@ -84,7 +94,7 @@ const DEMO_PATTERNS: { pattern: RegExp; agent: string; response: string }[] = [
   {
     pattern: /mercado libre|meli|marketplace/i,
     agent: 'mercuria',
-    response: `🟡 **MercadoLibre integrado nativamente:**\n\n• Conectas tu cuenta MeLi con OAuth (1 click)\n• Ves TODAS tus publicaciones en un dashboard\n• Sincroniza stock y precios automáticamente\n• Ve revenue, alertas y claims en un solo panel\n• Reactiva publicaciones pausadas con stock en bulk\n• Historial de ventas con gráficas\n\nOtros ERPs no tienen MercadoLibre. GAIA Prime sí. Es nativo, no un plugin.\n\n_Incluido en el plan de $499/mes._`,
+    response: `🟡 **MercadoLibre integrado nativamente:**\n\n• Conectas tu cuenta MeLi con OAuth (1 click)\n• Ves TODAS tus publicaciones en un dashboard\n• Sincroniza stock y precios automáticamente\n• Ve revenue, alertas y claims en un solo panel\n• Reactiva publicaciones pausadas con stock en bulk\n• Historial de ventas con gráficas\n\nOtros ERPs no tienen MercadoLibre. GAIA Prime sí. Es nativo, no un plugin.\n\n_Incluido desde el plan gratuito. Empieza gratis 3 meses._`,
   },
 ];
 
@@ -145,7 +155,7 @@ function renderMarkdown(text: string) {
 const QUICK_PROMPTS = [
   { label: '📊 ¿Cuánto vendí?', message: '¿Cuánto vendí este mes?' },
   { label: '📦 ¿Qué me falta?', message: '¿Qué productos tienen stock bajo?' },
-  { label: '💰 Precio', message: '¿Cuánto cuesta GAIA Prime?' },
+  { label: '� Quiero probarlo', message: 'Quiero probar GAIA gratis con mi negocio' },
   { label: '🛍️ Tienda online', message: '¿Cómo pongo mi tienda online?' },
 ];
 
@@ -172,16 +182,34 @@ export function GaiaChat({ isOpen, onToggle }: { isOpen: boolean; onToggle: () =
     if (isOpen) setTimeout(() => inputRef.current?.focus(), 300);
   }, [isOpen]);
 
-  // Welcome message
+  // Proactive welcome — GAIA drives the conversation
   useEffect(() => {
     if (isOpen && messages.length === 0) {
       setMessages([{
         id: 'welcome',
         role: 'assistant',
-        content: `¡Hola! 👋 Soy **GAIA**, el asistente inteligente de negocios.\n\nPuedo mostrarte cómo funciona GAIA Prime con datos de ejemplo. Pregúntame lo que le preguntarías a tu negocio:\n\n• "¿Cuánto vendí este mes?"\n• "¿Qué stock me falta?"\n• "¿Cuánto cuesta?"\n\nO haz click en las sugerencias de abajo. 👇`,
+        content: `¡Hola! 👋 Soy **GAIA** — y no soy un chatbot genérico.\n\nSoy una IA que **ya sabe administrar un negocio**. Me conecto a tu inventario, tus ventas, tu facturación SAT, tu tienda online — y te doy respuestas con datos reales.\n\n**Pruébame ahora mismo.** Pregúntame como si fuera tu sistema:\n\n• 📊 _"¿Cuánto vendí hoy?"_\n• 📦 _"¿Qué producto me falta?"_\n• 💰 _"¿Quién me debe más?"_\n\nO si ya quieres verlo con tus datos reales — te doy **3 meses gratis**, configurado en 60 segundos. 🚀`,
         agent: 'gaia',
         timestamp: new Date(),
       }]);
+
+      // Proactive follow-up after 8 seconds if user hasn't responded
+      const proactiveTimer = setTimeout(() => {
+        setMessages(prev => {
+          if (prev.length <= 1) {
+            return [...prev, {
+              id: 'proactive-1',
+              role: 'assistant',
+              content: `💡 **Dato rápido:** El 73% de las PyMEs en México administran con Excel y WhatsApp. Con GAIA, tu bodeguero ve sus tareas en su celular, tu contador tiene las facturas al día, y tú ves todo desde donde estés.\n\n¿Tienes un negocio? Cuéntame a qué te dedicas y te muestro cómo se vería GAIA configurado para ti. 👇`,
+              agent: 'gaia',
+              timestamp: new Date(),
+            }];
+          }
+          return prev;
+        });
+      }, 8000);
+
+      return () => clearTimeout(proactiveTimer);
     }
   }, [isOpen, messages.length]);
 
@@ -257,15 +285,24 @@ export function GaiaChat({ isOpen, onToggle }: { isOpen: boolean; onToggle: () =
 
   return (
     <>
-      {/* Floating button */}
+      {/* Floating button with attention pulse */}
       {!isOpen && (
-        <button
-          onClick={onToggle}
-          className="fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full bg-gradient-to-br from-cyan-500 to-violet-600 text-white shadow-2xl shadow-cyan-500/25 flex items-center justify-center hover:scale-110 active:scale-95 transition-all"
-          title="Hablar con GAIA"
-        >
-          <span className="text-2xl">🧠</span>
-        </button>
+        <div className="fixed bottom-6 right-6 z-50">
+          {/* Pulse ring */}
+          <div className="absolute inset-0 rounded-full bg-cyan-500/30 animate-ping" />
+          <button
+            onClick={onToggle}
+            className="relative w-14 h-14 rounded-full bg-gradient-to-br from-cyan-500 to-violet-600 text-white shadow-2xl shadow-cyan-500/25 flex items-center justify-center hover:scale-110 active:scale-95 transition-all"
+            title="Hablar con GAIA"
+          >
+            <span className="text-2xl">🧠</span>
+          </button>
+          {/* Label */}
+          <div className="absolute bottom-full right-0 mb-2 px-3 py-1.5 rounded-lg bg-gaia-surface border border-gaia-border text-xs text-gaia-text whitespace-nowrap shadow-lg animate-bounce">
+            💬 ¡Pregúntame algo!
+            <div className="absolute top-full right-5 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-gaia-border" />
+          </div>
+        </div>
       )}
 
       {/* Chat panel */}

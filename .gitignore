@@ -3,3 +3,7 @@ dist
 .env
 .env.local
 *.local
+.venv/
+tts-test/
+public/audio/gaia/_backup/
+public/audio/gaia/_backup2/

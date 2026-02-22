@@ -1,0 +1,105 @@
+/* ═══════════════════════════════════════════════════════════════════
+   🫀 ATHENA CEO PULSE — Animations
+   ═══════════════════════════════════════════════════════════════════ */
+
+@keyframes pulseRingCalm {
+  0%, 100% { stroke-dashoffset: var(--offset); opacity: 0.8; }
+  50% { opacity: 1; }
+}
+@keyframes pulseRingAlert {
+  0%, 100% { stroke-dashoffset: var(--offset); opacity: 0.7; filter: brightness(1); }
+  50% { opacity: 1; filter: brightness(1.3); }
+}
+@keyframes pulseRingCritical {
+  0%, 100% { opacity: 0.6; filter: brightness(1); }
+  30% { opacity: 1; filter: brightness(1.5); }
+  60% { opacity: 0.8; filter: brightness(1.2); }
+}
+
+/* Anomaly Card Glow */
+@keyframes anomalyGlowCritical {
+  0%, 100% { box-shadow: 0 0 8px rgba(239,68,68,0.2), 0 0 20px rgba(239,68,68,0.1); }
+  50% { box-shadow: 0 0 16px rgba(239,68,68,0.4), 0 0 40px rgba(239,68,68,0.15); }
+}
+@keyframes anomalyGlowWarning {
+  0%, 100% { box-shadow: 0 0 6px rgba(245,158,11,0.15), 0 0 15px rgba(245,158,11,0.08); }
+  50% { box-shadow: 0 0 12px rgba(245,158,11,0.3), 0 0 30px rgba(245,158,11,0.12); }
+}
+@keyframes anomalyGlowWatch {
+  0%, 100% { box-shadow: 0 0 4px rgba(59,130,246,0.1), 0 0 10px rgba(59,130,246,0.05); }
+  50% { box-shadow: 0 0 8px rgba(59,130,246,0.2), 0 0 20px rgba(59,130,246,0.08); }
+}
+
+/* Severity Dot */
+@keyframes severityDotCritical {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.6); opacity: 0.5; }
+}
+@keyframes severityDotWarning {
+  0%, 100% { transform: scale(1); opacity: 0.9; }
+  50% { transform: scale(1.3); opacity: 0.6; }
+}
+
+/* Score */
+@keyframes scoreReveal {
+  0% { opacity: 0; transform: translateY(8px) scale(0.9); }
+  60% { opacity: 1; transform: translateY(-2px) scale(1.02); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* Narrative */
+@keyframes narrativeFadeIn {
+  0% { opacity: 0; transform: translateY(4px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+/* Action Badge */
+@keyframes urgentBadgePulse {
+  0%, 100% { background-color: rgba(239,68,68,0.15); }
+  50% { background-color: rgba(239,68,68,0.3); }
+}
+
+/* Card Enter */
+@keyframes cardSlideUp {
+  0% { opacity: 0; transform: translateY(16px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+/* Healthy Breathe */
+@keyframes healthyBreathe {
+  0%, 100% { opacity: 0.85; }
+  50% { opacity: 1; }
+}
+
+/* ── Dashboard Background Intensity ── */
+.pulse-bg-calm {
+  background: linear-gradient(135deg, hsl(220 30% 6%) 0%, hsl(230 25% 8%) 50%, hsl(220 30% 6%) 100%);
+  transition: background 2s ease;
+}
+.pulse-bg-alert {
+  background: linear-gradient(135deg, hsl(220 30% 6%) 0%, hsl(35 20% 8%) 30%, hsl(220 30% 7%) 70%, hsl(220 30% 6%) 100%);
+  transition: background 1.5s ease;
+}
+.pulse-bg-critical {
+  background: linear-gradient(135deg, hsl(220 30% 6%) 0%, hsl(0 20% 8%) 25%, hsl(350 15% 7%) 50%, hsl(220 30% 7%) 75%, hsl(220 30% 6%) 100%);
+  transition: background 1s ease;
+}
+.pulse-bg-crisis {
+  background: linear-gradient(135deg, hsl(0 20% 7%) 0%, hsl(350 25% 9%) 30%, hsl(0 20% 8%) 60%, hsl(350 15% 7%) 100%);
+  animation: crisisPulse 4s ease-in-out infinite;
+}
+@keyframes crisisPulse {
+  0%, 100% { filter: brightness(1); }
+  50% { filter: brightness(1.05); }
+}
+
+/* ── Utility Classes ── */
+.anomaly-card-critical { animation: anomalyGlowCritical 2.5s ease-in-out infinite, cardSlideUp 0.4s ease-out; }
+.anomaly-card-warning { animation: anomalyGlowWarning 3s ease-in-out infinite, cardSlideUp 0.4s ease-out; }
+.anomaly-card-watch { animation: anomalyGlowWatch 3.5s ease-in-out infinite, cardSlideUp 0.4s ease-out; }
+.severity-dot-critical { animation: severityDotCritical 1.5s ease-in-out infinite; }
+.severity-dot-warning { animation: severityDotWarning 2s ease-in-out infinite; }
+.action-badge-urgent { animation: urgentBadgePulse 2s ease-in-out infinite; }
+.healthy-metric { animation: healthyBreathe 4s ease-in-out infinite; }
+.score-number { animation: scoreReveal 0.8s ease-out; }
+.narrative-text { animation: narrativeFadeIn 0.6s ease-out; }
