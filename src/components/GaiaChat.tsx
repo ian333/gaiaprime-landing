@@ -74,7 +74,7 @@ const DEMO_PATTERNS: { pattern: RegExp; agent: string; response: string }[] = [
   {
     pattern: /whatsapp|contacto|hablar|agendar|llam/i,
     agent: 'gaia',
-    response: `¡Con gusto! 📱\n\nPuedes contactarnos por:\n\n• **WhatsApp**: wa.me/+5218112345678\n• **Email**: hola@gaiaprime.com.mx\n\nO si me dices tu número aquí, nuestro equipo te contacta hoy. La demo es gratuita y sin compromiso.\n\n¿Te gustaría agendar una llamada de 15 minutos?`,
+    response: `¡Con gusto! 📱\n\nPuedes contactarnos por:\n\n• **WhatsApp**: [wa.me/5215573633622](https://wa.me/5215573633622)\n• **Email**: hola@gaiaprime.com.mx\n\nO si me dices tu número aquí, nuestro equipo te contacta hoy. La demo es gratuita y sin compromiso.\n\n¿Te gustaría agendar una llamada de 15 minutos?`,
   },
   {
     pattern: /hola|buenas|hey|hi|qué tal|que onda/i,
@@ -94,7 +94,7 @@ function findDemoResponse(input: string): { agent: string; response: string } {
   if (match) return { agent: match.agent, response: match.response };
   return {
     agent: 'gaia',
-    response: `Esa es una excelente pregunta. 🤔\n\nEn este momento estoy en **modo demo**, así que solo puedo responder sobre temas generales de GAIA Prime.\n\nPrueba preguntar:\n• "¿Cuánto vendí este mes?"\n• "¿Qué stock me falta?"\n• "¿Cuánto cuesta GAIA?"\n• "¿Cómo pongo mi tienda online?"\n\nO si quieres verme en acción con **datos reales de tu negocio**, déjame tu WhatsApp y te agendamos una demo personalizada. 🚀`,
+    response: `Esa es una excelente pregunta. 🤔\n\nEn este momento estoy en **modo demo**, así que solo puedo responder sobre temas generales de GAIA Prime.\n\nPrueba preguntar:\n• "¿Cuánto vendí este mes?"\n• "¿Qué stock me falta?"\n• "¿Cuánto cuesta GAIA?"\n• "¿Cómo pongo mi tienda online?"\n\nO si quieres verme en acción con **datos reales de tu negocio**, escríbenos por WhatsApp y te agendamos una demo personalizada. 🚀`,
   };
 }
 

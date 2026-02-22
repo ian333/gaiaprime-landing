@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 import { GaiaChat } from './components/GaiaChat';
 
 /* ══════════════════════════════════════════════════════════════
@@ -25,12 +25,15 @@ function useReveal() {
 // ── Navbar ──
 function Navbar({ onOpenChat }: { onOpenChat: () => void }) {
   const [scrolled, setScrolled] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  const handleNavClick = useCallback(() => setMobileMenuOpen(false), []);
 
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'glass shadow-lg' : ''}`}>
@@ -48,12 +51,36 @@ function Navbar({ onOpenChat }: { onOpenChat: () => void }) {
             <a href="#comparativa" className="text-sm text-gaia-muted hover:text-gaia-text transition-colors">Comparativa</a>
           </div>
 
-          <button
-            onClick={onOpenChat}
-            className="px-4 py-2 rounded-lg bg-gaia-cyan/20 text-gaia-cyan text-sm font-medium border border-gaia-cyan/30 hover:bg-gaia-cyan/30 transition-all"
-          >
-            Hablar con GAIA
-          </button>
+          <div className="flex items-center gap-3">
+            <button
+              onClick={onOpenChat}
+              className="hidden sm:inline-flex px-4 py-2 rounded-lg bg-gaia-cyan/20 text-gaia-cyan text-sm font-medium border border-gaia-cyan/30 hover:bg-gaia-cyan/30 transition-all"
+            >
+              Hablar con GAIA
+            </button>
+
+            {/* Mobile hamburger */}
+            <button
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              className="md:hidden w-9 h-9 flex flex-col items-center justify-center gap-1.5"
+              aria-label="Menú"
+            >
+              <span className={`w-5 h-0.5 bg-gaia-text transition-all duration-300 ${mobileMenuOpen ? 'rotate-45 translate-y-1' : ''}`} />
+              <span className={`w-5 h-0.5 bg-gaia-text transition-all duration-300 ${mobileMenuOpen ? 'opacity-0' : 'opacity-100'}`} />
+              <span className={`w-5 h-0.5 bg-gaia-text transition-all duration-300 ${mobileMenuOpen ? '-rotate-45 -translate-y-1' : ''}`} />
+            </button>
+          </div>
+        </div>
+
+        {/* Mobile menu */}
+        <div className={`md:hidden overflow-hidden transition-all duration-300 ${mobileMenuOpen ? 'max-h-64 pb-4' : 'max-h-0'}`}>
+          <div className="flex flex-col gap-3 pt-2">
+            <a href="#solucion" onClick={handleNavClick} className="text-sm text-gaia-muted hover:text-gaia-text transition-colors py-1">Producto</a>
+            <a href="#modulos" onClick={handleNavClick} className="text-sm text-gaia-muted hover:text-gaia-text transition-colors py-1">Módulos</a>
+            <a href="#precio" onClick={handleNavClick} className="text-sm text-gaia-muted hover:text-gaia-text transition-colors py-1">Precio</a>
+            <a href="#comparativa" onClick={handleNavClick} className="text-sm text-gaia-muted hover:text-gaia-text transition-colors py-1">Comparativa</a>
+            <button onClick={() => { onOpenChat(); handleNavClick(); }} className="text-sm text-gaia-cyan font-medium text-left py-1">🧠 Hablar con GAIA</button>
+          </div>
         </div>
       </div>
     </nav>
@@ -233,10 +260,10 @@ function Hero({ onOpenChat }: { onOpenChat: () => void }) {
               </a>
             </div>
 
-            <div className="flex items-center gap-6 mt-8 text-xs text-gaia-muted">
+            <div className="flex flex-wrap items-center gap-4 sm:gap-6 mt-8 text-xs text-gaia-muted">
               <span className="flex items-center gap-1.5">✅ Sin contratos</span>
               <span className="flex items-center gap-1.5">✅ Arranca en 1 día</span>
-              <span className="flex items-center gap-1.5">✅ Hecho en México</span>
+              <span className="flex items-center gap-1.5">✅ Hecho en México 🇲🇽</span>
             </div>
           </div>
 
@@ -539,6 +566,32 @@ function Comparison() {
   );
 }
 
+// ── Numbers / Social proof ──
+function Numbers() {
+  const stats = [
+    { value: '6', label: 'Módulos integrados', sublabel: 'ERP, BI, Producción, Chat, Commerce, AI' },
+    { value: '<1 día', label: 'Para empezar', sublabel: 'Vs 6-18 meses un ERP tradicional' },
+    { value: '$499', label: 'Todo incluido', sublabel: 'Sin costos ocultos ni consultores' },
+    { value: '24/7', label: 'AI disponible', sublabel: 'Pregúntale lo que quieras, siempre' },
+  ];
+
+  return (
+    <section className="py-16 relative border-y border-gaia-border/50">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 reveal-children">
+          {stats.map((s, i) => (
+            <div key={i} className="text-center">
+              <p className="text-3xl sm:text-4xl font-bold gradient-text mb-1">{s.value}</p>
+              <p className="text-sm font-semibold text-gaia-text mb-0.5">{s.label}</p>
+              <p className="text-xs text-gaia-muted">{s.sublabel}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 // ── Use Cases ──
 function UseCases() {
   const cases = [
@@ -553,7 +606,7 @@ function UseCases() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12 reveal">
           <h2 className="text-3xl sm:text-4xl font-bold mb-4">¿Es para mi negocio?</h2>
-          <p className="text-gaia-muted">Si vendes algo físico o un servicio, sí.</p>
+          <p className="text-gaia-muted max-w-xl mx-auto">Si vendes algo físico o un servicio, y estás cansado de administrar con Excel y WhatsApp — sí.</p>
         </div>
 
         <div className="grid sm:grid-cols-2 gap-6 reveal-children">
@@ -651,7 +704,7 @@ function FinalCTA({ onOpenChat }: { onOpenChat: () => void }) {
             🧠 Hablar con GAIA ahora
           </button>
           <a
-            href="https://wa.me/+5218112345678?text=Hola%2C%20quiero%20info%20sobre%20GAIA%20Prime"
+            href="https://wa.me/5215573633622?text=Hola%2C%20quiero%20info%20sobre%20GAIA%20Prime"
             target="_blank"
             rel="noopener noreferrer"
             className="px-8 py-4 rounded-xl border border-gaia-border text-gaia-text font-semibold text-lg hover:bg-gaia-surface transition-colors flex items-center gap-2"
@@ -711,11 +764,12 @@ export default function App() {
       <div className="relative z-10">
         <Navbar onOpenChat={() => setChatOpen(true)} />
         <Hero onOpenChat={() => setChatOpen(true)} />
+        <Numbers />
         <PainPoints />
         <Solution />
         <Modules />
-        <UseCases />
         <Comparison />
+        <UseCases />
         <Pricing onOpenChat={() => setChatOpen(true)} />
         <FinalCTA onOpenChat={() => setChatOpen(true)} />
         <Footer />
