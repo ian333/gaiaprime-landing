@@ -515,52 +515,119 @@ function Modules() {
   );
 }
 
-// ── Comparison Table ──
+// ── Comparison ──
 function Comparison() {
+  // Each category shows what tool people normally buy + what GAIA replaces it with
+  const categories = [
+    {
+      category: 'ERP / Administración',
+      icon: '📦',
+      alternatives: 'SAP · Odoo · Contpaqi · Alegra',
+      altPrice: '$500/mes - $500K setup',
+      gaiaModule: 'Hermes',
+      gaiaFeatures: 'Inventario, compras, ventas, facturas SAT, clientes, proveedores',
+    },
+    {
+      category: 'Business Intelligence',
+      icon: '📊',
+      alternatives: 'Power BI · Tableau · Looker',
+      altPrice: '$10-70 USD/usuario/mes',
+      gaiaModule: 'Athena',
+      gaiaFeatures: 'Dashboards de CEO, métricas en vivo, alertas, pronósticos',
+    },
+    {
+      category: 'Gestión de Trabajo',
+      icon: '🔨',
+      alternatives: 'Asana · Monday · Jira · Trello',
+      altPrice: '$10-30 USD/usuario/mes',
+      gaiaModule: 'Hephaestus',
+      gaiaFeatures: 'Grafo visual de procesos, tareas mobile para operadores, ruta crítica',
+    },
+    {
+      category: 'Chat Interno',
+      icon: '💬',
+      alternatives: 'Slack · Discord · Teams',
+      altPrice: '$7-12 USD/usuario/mes',
+      gaiaModule: 'Iris',
+      gaiaFeatures: 'Canales, hilos, agentes AI en la conversación, integrado al ERP',
+    },
+    {
+      category: 'Tienda Online',
+      icon: '🛍️',
+      alternatives: 'Shopify · WooCommerce · TiendaNube',
+      altPrice: '$30-300 USD/mes + comisiones',
+      gaiaModule: 'Mercuria',
+      gaiaFeatures: 'Storefront propio + MercadoLibre nativo, stock sincronizado',
+    },
+    {
+      category: 'Asistente AI',
+      icon: '🧠',
+      alternatives: 'ChatGPT + copiar datos',
+      altPrice: '$20 USD/mes (sin tus datos)',
+      gaiaModule: 'GAIA',
+      gaiaFeatures: 'Multi-agente con acceso a TODOS tus datos, responde en español 24/7',
+    },
+  ];
+
   return (
     <section id="comparativa" className="py-20 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12 reveal">
-          <h2 className="text-3xl sm:text-4xl font-bold mb-4">¿Por qué GAIA y no otra cosa?</h2>
-          <p className="text-gaia-muted">Comparación honesta. Sin letras chiquitas.</p>
+        <div className="text-center mb-6 reveal">
+          <h2 className="text-3xl sm:text-4xl font-bold mb-4">
+            6 herramientas. <span className="gradient-text">1 solo precio.</span>
+          </h2>
+          <p className="text-gaia-muted max-w-2xl mx-auto">
+            Las PyMEs terminan pagando 5-6 herramientas desconectadas.
+            <br className="hidden sm:block" />
+            GAIA Prime las reemplaza todas — integradas, por $499/mes.
+          </p>
         </div>
 
-        <div className="overflow-x-auto reveal">
-          <table className="w-full min-w-[700px] text-sm">
-            <thead>
-              <tr className="border-b border-gaia-border">
-                <th className="py-3 px-4 text-left text-gaia-muted font-medium" />
-                <th className="py-3 px-4 text-center text-gaia-muted font-medium">SAP Business One</th>
-                <th className="py-3 px-4 text-center text-gaia-muted font-medium">Odoo</th>
-                <th className="py-3 px-4 text-center text-gaia-muted font-medium">Shopify + Contpaqi</th>
-                <th className="py-3 px-4 text-center bg-gaia-cyan/5 rounded-t-xl border-x border-t border-gaia-cyan/20">
-                  <span className="font-bold text-gaia-cyan">GAIA Prime ✦</span>
-                </th>
-              </tr>
-            </thead>
-            <tbody className="text-xs">
-              {[
-                ['Precio', '$300K-$500K + licencias', '"Gratis" + $50K implementar', '$500/mes + PAC aparte', '$499/mes todo incluido'],
-                ['Arranque', '6-18 meses', '2-6 meses', '1-2 meses', '1 día'],
-                ['Consultor', 'Obligatorio', 'Probablemente', 'No pero te pierdes', 'No necesitas'],
-                ['Facturación SAT', 'Módulo extra', 'Plugin + configurar', 'Software aparte', 'Integrado nativo'],
-                ['Tienda online', 'No incluido', 'Plugin', 'Solo Shopify', '1 click + MeLi'],
-                ['MercadoLibre', '❌', '❌', '❌', '✅ Nativo'],
-                ['AI conversacional', '❌', '❌', '❌', '✅ GAIA multi-agente'],
-                ['Desde celular', 'Limitado', 'Limitado', 'Solo la tienda', '✅ Todo'],
-              ].map(([label, ...values], i) => (
-                <tr key={i} className="border-b border-gaia-border/50">
-                  <td className="py-3 px-4 font-medium text-gaia-text">{label}</td>
-                  {values.map((v, j) => (
-                    <td key={j} className={`py-3 px-4 text-center ${j === 3 ? 'bg-gaia-cyan/5 border-x border-gaia-cyan/20 text-gaia-cyan font-semibold' : 'text-gaia-muted'}`}>
-                      {v}
-                    </td>
-                  ))}
-                </tr>
-              ))}
-            </tbody>
-          </table>
+        {/* The total cost callout */}
+        <div className="reveal flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8 my-10">
+          <div className="text-center px-6 py-4 rounded-2xl border border-red-500/20 bg-red-500/5">
+            <p className="text-xs text-red-400 font-medium mb-1">Stack tradicional</p>
+            <p className="text-2xl font-bold text-red-400">$150-800 USD/mes</p>
+            <p className="text-[10px] text-gaia-muted mt-1">+ implementación + consultores + integraciones</p>
+          </div>
+          <span className="text-2xl text-gaia-muted">→</span>
+          <div className="text-center px-6 py-4 rounded-2xl border border-gaia-cyan/30 bg-gaia-cyan/5">
+            <p className="text-xs text-gaia-cyan font-medium mb-1">GAIA Prime</p>
+            <p className="text-2xl font-bold text-gaia-cyan price-glow">$499 MXN/mes</p>
+            <p className="text-[10px] text-gaia-muted mt-1">Todo incluido · Sin consultores · 1 día de arranque</p>
+          </div>
         </div>
+
+        {/* Category cards */}
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 reveal-children">
+          {categories.map((c, i) => (
+            <div key={i} className="bg-gaia-surface/50 border border-gaia-border rounded-2xl p-5 card-hover">
+              <div className="flex items-center gap-2 mb-3">
+                <span className="text-xl">{c.icon}</span>
+                <h3 className="font-semibold text-gaia-text text-sm">{c.category}</h3>
+              </div>
+
+              {/* What you'd normally pay */}
+              <div className="mb-3 pb-3 border-b border-gaia-border/50">
+                <p className="text-[10px] text-gaia-muted uppercase tracking-wider mb-1">Alternativas</p>
+                <p className="text-xs text-gaia-muted">{c.alternatives}</p>
+                <p className="text-xs text-red-400/80 mt-0.5">{c.altPrice}</p>
+              </div>
+
+              {/* What GAIA gives you */}
+              <div>
+                <p className="text-[10px] text-gaia-cyan uppercase tracking-wider mb-1">En GAIA Prime → {c.gaiaModule}</p>
+                <p className="text-xs text-gaia-text leading-relaxed">{c.gaiaFeatures}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <p className="text-center text-xs text-gaia-muted mt-8 reveal">
+          * Precios de alternativas basados en planes estándar publicados a febrero 2026.
+          <br />
+          GAIA Prime incluye usuarios ilimitados. Sin costo por usuario.
+        </p>
       </div>
     </section>
   );
